@@ -22,6 +22,12 @@ pip install -r requirements.txt
 uvicorn app.main:app --reload
 ```
 
+Windows 下也可直接运行根目录脚本（免输长命令）：
+
+```bash
+start_backend.bat
+```
+
 ## 3. 访问地址
 
 - 浏览器打开：`http://127.0.0.1:8000`

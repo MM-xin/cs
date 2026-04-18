@@ -347,14 +347,15 @@ onMounted(initialize)
             <el-tag size="small" effect="plain">{{ row.category }}</el-tag>
           </template>
         </el-table-column>
-        <el-table-column label="买入价" width="140">
+        <el-table-column label="买入价" width="135">
           <template #default="{ row }">
             <el-input-number
               :model-value="row.buy_price"
               :min="0"
-              :step="1"
-              controls-position="right"
+              :precision="2"
+              :controls="false"
               size="small"
+              class="minimal-input"
               @change="(v) => onInlineEdit(row, 'buy_price', v)"
             />
           </template>
@@ -364,15 +365,16 @@ onMounted(initialize)
             {{ Number(row.current_price || 0).toFixed(2) }}
           </template>
         </el-table-column>
-        <el-table-column label="卖出价" width="140">
+        <el-table-column label="卖出价" width="135">
           <template #default="{ row }">
             <el-input-number
               :disabled="!row.is_tradable && row.status !== 'sold'"
               :model-value="row.sell_price"
               :min="0"
               :step="1"
-              controls-position="right"
+              :controls="false"
               size="small"
+              :class="['minimal-input', { 'no-edit-border': row.sell_price === null || row.sell_price === '' }]"
               @change="(v) => onInlineEdit(row, 'sell_price', v)"
             />
           </template>
@@ -403,7 +405,7 @@ onMounted(initialize)
             {{ Number(row.fee_amount || 0).toFixed(2) }}
           </template>
         </el-table-column>
-        <el-table-column label="操作" width="220" fixed="right">
+        <el-table-column label="操作" width="180" fixed="right">
           <template #default="{ row }">
             <el-space>
               <el-button size="small" @click="openEditDialog(row)">编辑</el-button>
