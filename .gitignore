@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# IDE
+.idea/
+.cursor/
+
+# Frontend
+frontend-vue/node_modules/
+frontend-vue/dist/
+
+# Runtime data
+data/*.db
+backups/*.db
+
+# OS
+Thumbs.db
+.DS_Store

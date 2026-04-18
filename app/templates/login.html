@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>登录 - CS 饰品管理工具</title>
+    <link rel="stylesheet" href="/static/style.css" />
+  </head>
+  <body>
+    <main class="container">
+      <section class="card">
+        <h1>CS 饰品管理工具</h1>
+        <p class="subtext">请先登录</p>
+
+        <form method="post" action="/login">
+          <label for="username">用户名</label>
+          <input id="username" name="username" type="text" required />
+
+          <label for="password">密码</label>
+          <input id="password" name="password" type="password" required />
+
+          <button type="submit">登录</button>
+        </form>
+
+        {% if error %}
+        <p class="error">{{ error }}</p>
+        {% endif %}
+      </section>
+    </main>
+  </body>
+</html>
