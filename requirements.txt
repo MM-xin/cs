@@ -1,7 +1,12 @@
 fastapi~=0.136.0
 uvicorn
-jinja2
-python-multipart
 pyyaml~=6.0.3
+itsdangerous
+loguru
+apscheduler
+httpx
 
 starlette~=1.0.0
+
+# dev
+pytest

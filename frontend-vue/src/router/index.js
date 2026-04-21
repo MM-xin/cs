@@ -3,12 +3,14 @@ import { ElMessage } from 'element-plus'
 import { getMe } from '../services/auth'
 import LoginView from '../views/LoginView.vue'
 import ItemsView from '../views/ItemsView.vue'
+import DashboardView from '../views/DashboardView.vue'
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: '/login', name: 'login', component: LoginView },
-    { path: '/', redirect: '/items' },
+    { path: '/', redirect: '/dashboard' },
+    { path: '/dashboard', name: 'dashboard', component: DashboardView, meta: { requiresAuth: true } },
     { path: '/items', name: 'items', component: ItemsView, meta: { requiresAuth: true } },
   ],
 })

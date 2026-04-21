@@ -2,6 +2,11 @@
   box-sizing: border-box;
 }
 
+html {
+  scrollbar-gutter: stable;
+  overflow-y: scroll;
+}
+
 body {
   margin: 0;
   background: #f5f7fb;
@@ -50,7 +55,7 @@ body {
 }
 
 .page {
-  max-width: 1580px;
+  max-width: 1720px;
   margin: 0 auto;
   padding: 20px;
 }
@@ -82,9 +87,60 @@ body {
   gap: 8px;
 }
 
+.content-layout {
+  display: grid;
+  grid-template-columns: 200px minmax(0, 1fr);
+  gap: 14px;
+}
+
+.left-menu {
+  background: #f8fafc;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  height: fit-content;
+}
+
+.menu-btn {
+  width: 100%;
+  border: 1px solid #d1d5db;
+  background: #fff;
+  border-radius: 8px;
+  padding: 10px 12px;
+  text-align: left;
+  color: #1f2937;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.menu-btn.active {
+  border-color: #93c5fd;
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+
+.menu-count {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.merge-switch {
+  margin-top: 6px;
+}
+
+.content-main {
+  min-width: 0;
+}
+
 .stats-grid {
   display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
+  grid-template-columns: repeat(6, minmax(0, 1fr));
   gap: 12px;
   margin-bottom: 14px;
 }
@@ -106,10 +162,10 @@ body {
 }
 
 .filters {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 2.3fr 2.3fr auto;
-  gap: 12px;
-  align-items: end;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 14px;
+  align-items: flex-end;
   margin-bottom: 16px;
 }
 
@@ -117,6 +173,18 @@ body {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  flex: 1 1 180px;
+  min-width: 180px;
+}
+
+.filter-item.search {
+  flex: 1 1 280px;
+  min-width: 240px;
+}
+
+.filter-item.date {
+  flex: 1 1 440px;
+  min-width: 360px;
 }
 
 .filter-item label {
@@ -128,11 +196,31 @@ body {
   display: flex;
   align-items: center;
   gap: 8px;
+  flex-wrap: nowrap;
+}
+
+.filter-item.date .range .el-date-editor {
+  flex: 1 1 0;
+  min-width: 0;
+  width: auto !important;
+}
+
+.filter-item.date .el-date-editor--month {
+  width: 100% !important;
 }
 
 .filter-actions {
   display: flex;
   gap: 8px;
+  flex: 0 0 auto;
+  margin-left: auto;
+  align-self: flex-end;
+}
+
+.filter-break {
+  flex-basis: 100%;
+  height: 0;
+  margin: 0;
 }
 
 .table {
@@ -159,10 +247,52 @@ body {
   color: #111827;
 }
 
+.item-name-wrap {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stack-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 11px;
+  color: #374151;
+}
+
+.stack-icon {
+  position: relative;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #9ca3af;
+  border-radius: 2px;
+  background: #f8fafc;
+}
+
+.stack-icon::after {
+  content: '';
+  position: absolute;
+  top: -3px;
+  left: -3px;
+  width: 11px;
+  height: 11px;
+  border: 1px solid #9ca3af;
+  border-radius: 2px;
+  background: #ffffff;
+}
+
 .item-buy-time {
   font-size: 12px;
   color: #6b7280;
   margin-top: 2px;
+}
+
+.avg-value {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
 }
 
 .inventory-table .minimal-input {
@@ -214,12 +344,12 @@ body {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
-  .filters {
+  .content-layout {
     grid-template-columns: 1fr;
   }
 
   .filter-actions {
-    grid-column: span 1;
+    margin-left: 0;
   }
 
   .toolbar {
